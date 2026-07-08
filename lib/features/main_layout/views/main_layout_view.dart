@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:spotify_clone/core/widgets/gradient_background.dart';
 import 'package:spotify_clone/features/home_screen/views/home_view.dart';
 import 'package:spotify_clone/features/library_screen/views/library_view.dart';
 import 'package:spotify_clone/features/main_layout/views/widgets/custom_bottom_nav_bar.dart';
@@ -25,17 +26,8 @@ class _MainLayoutViewState extends State<MainLayoutView> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      height: double.infinity,
-      decoration: const BoxDecoration(
-        gradient: LinearGradient(
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
-          colors: [Color(0xFF484C4D), Color(0xFF121212), Color(0xFF121212)],
-        ),
-      ),
-      child: Scaffold(
+    return GradientBackground(
+      body: Scaffold(
         extendBody: true,
         backgroundColor: Colors.transparent,
         body: IndexedStack(index: _currentIndex, children: _screens),
