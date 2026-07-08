@@ -93,6 +93,10 @@ class HomeView extends StatelessWidget {
             CustomHorizontalList(
               cards: [
                 CustomizedCard(
+                  text: "Stay \nSong . Justin Bieber",
+                  imgLink: "assets/images/stay.jpg",
+                ),
+                CustomizedCard(
                   text: "Believer \nSong . Imagine Dragons",
                   imgLink: "assets/images/believer.jpg",
                 ),
