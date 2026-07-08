@@ -16,7 +16,7 @@ class LibraryView extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(height: 30.sp),
+              SizedBox(height: 16.sp),
               Center(
                 child: Container(
                   decoration: BoxDecoration(
@@ -30,7 +30,7 @@ class LibraryView extends StatelessWidget {
                     ],
                   ),
                   width: 233.w,
-                  height: 266.h,
+                  height: 250.h,
                   child: Image.asset(
                     "assets/images/imaginedragons.jpg",
                     width: 233.w,
@@ -77,7 +77,7 @@ class LibraryView extends StatelessWidget {
                   fontWeight: FontWeight.w500,
                 ),
               ),
-              SizedBox(height: 24.h),
+              SizedBox(height: 12.h),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -99,32 +99,32 @@ class LibraryView extends StatelessWidget {
                 ],
               ),
               //SizedBox(height: 30.h),
-              SongsListtile(
+              SongsListTile(
                 songTitle: "Alone",
                 artistName: "Alan Walker",
                 imagePath: "assets/images/alone.jpg",
               ),
-              SongsListtile(
+              SongsListTile(
                 songTitle: "Let me love you",
                 artistName: "Justin Bieber feat DJ Snake",
                 imagePath: "assets/images/letmeloveyou.jpg",
               ),
-              SongsListtile(
+              SongsListTile(
                 songTitle: "Ignite",
                 artistName: "Alan Walker",
                 imagePath: "assets/images/ignite.png",
               ),
-              SongsListtile(
+              SongsListTile(
                 songTitle: "Taki Taki",
                 artistName: "DJ Snake feat Selena Gomez",
                 imagePath: "assets/images/taki.jpg",
               ),
-              SongsListtile(
+              SongsListTile(
                 songTitle: "Believer",
                 artistName: "Imagine Dragons",
                 imagePath: "assets/images/believer.jpg",
               ),
-              SongsListtile(
+              SongsListTile(
                 songTitle: "Perfect",
                 artistName: "Ed Sheeran",
                 imagePath: "assets/images/perfect.png",

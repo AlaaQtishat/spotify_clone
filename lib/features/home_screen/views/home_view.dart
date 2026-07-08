@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:spotify_clone/features/home_screen/views/widgets/customized_card.dart';
 import 'package:spotify_clone/features/home_screen/views/widgets/customized_list_view.dart';
+import 'package:spotify_clone/features/music_player_screen/views/music_player_view.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
@@ -93,6 +94,13 @@ class HomeView extends StatelessWidget {
             CustomHorizontalList(
               cards: [
                 CustomizedCard(
+                  onTap: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => const MusicPlayerView(),
+                      ),
+                    );
+                  },
                   text: "Stay \nSong . Justin Bieber",
                   imgLink: "assets/images/stay.jpg",
                 ),

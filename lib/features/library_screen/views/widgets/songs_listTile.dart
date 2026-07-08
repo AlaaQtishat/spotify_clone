@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class SongsListtile extends StatelessWidget {
+class SongsListTile extends StatelessWidget {
   final String songTitle;
   final String artistName;
   final String imagePath;
-  const SongsListtile({
+  const SongsListTile({
     super.key,
     required this.songTitle,
     required this.artistName,
