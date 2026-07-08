@@ -5,6 +5,7 @@ import 'package:spotify_clone/core/widgets/customized_buttons/customized_elevate
 import 'package:spotify_clone/core/widgets/customized_buttons/customized_text_button.dart';
 import 'package:spotify_clone/features/auth/views/signup_view.dart';
 import 'package:spotify_clone/features/auth/views/widgets/customized_textfield.dart';
+import 'package:spotify_clone/features/main_layout/views/main_layout_view.dart';
 
 class LoginView extends StatelessWidget {
   const LoginView({super.key});
@@ -64,7 +65,16 @@ class LoginView extends StatelessWidget {
                         ),
                       ),
                       SizedBox(height: 30.h),
-                      CustomizedElevatedButton(text: "Login"),
+                      CustomizedElevatedButton(
+                        text: "Login",
+                        onPressed: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) => MainLayoutView(),
+                            ),
+                          );
+                        },
+                      ),
                       SizedBox(height: 60.h),
                       CustomizedTextButton(
                         text: "Sign up",

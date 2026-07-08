@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:spotify_clone/core/constants/app_colors.dart';
 import 'package:spotify_clone/core/widgets/customized_buttons/customized_elevated_button.dart';
 import 'package:spotify_clone/core/widgets/customized_buttons/customized_text_button.dart';
+import 'package:spotify_clone/features/auth/views/signup_view.dart';
 import 'package:spotify_clone/features/welcome/views/widgets/customized_outlined_button.dart';
 import 'package:spotify_clone/features/auth/views/login_view.dart';
 
@@ -45,7 +46,14 @@ class WelcomeView extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 55.h),
-              CustomizedElevatedButton(text: "Sign up free"),
+              CustomizedElevatedButton(
+                text: "Sign up free",
+                onPressed: () {
+                  Navigator.of(
+                    context,
+                  ).push(MaterialPageRoute(builder: (context) => SignupView()));
+                },
+              ),
               SizedBox(height: 6.sp),
               CustomizedOutlinedButton(
                 text: "Continue with phone number",

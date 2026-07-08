@@ -4,12 +4,13 @@ import 'package:spotify_clone/core/constants/app_colors.dart';
 
 class CustomizedElevatedButton extends StatelessWidget {
   String text;
-  CustomizedElevatedButton({super.key, required this.text});
+  VoidCallback? onPressed;
+  CustomizedElevatedButton({super.key, required this.text, this.onPressed});
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      onPressed: () {},
+      onPressed: onPressed,
 
       style: ElevatedButton.styleFrom(
         backgroundColor: AppColors.elevatedButtonBackground,
