@@ -22,7 +22,6 @@ class CustomBottomNavBar extends StatelessWidget {
           end: Alignment.bottomCenter,
           colors: [
             const Color(0xFF121212).withOpacity(0.0),
-
             const Color(0xFF121212).withOpacity(0.85),
           ],
         ),
@@ -45,18 +44,26 @@ class CustomBottomNavBar extends StatelessWidget {
         ),
         items: [
           const BottomNavigationBarItem(
-            icon: Icon(Icons.home_filled),
+            activeIcon: Icon(Icons.home),
+            icon: Icon(Icons.home_outlined),
             label: 'Home',
           ),
           const BottomNavigationBarItem(
+            activeIcon: Icon(Icons.saved_search),
             icon: Icon(Icons.search),
             label: 'Search',
           ),
           const BottomNavigationBarItem(
-            icon: Icon(Icons.library_music),
+            activeIcon: Icon(Icons.library_music),
+            icon: Icon(Icons.library_music_outlined),
             label: 'Your Library',
           ),
           BottomNavigationBarItem(
+            activeIcon: Image.asset(
+              'assets/images/spotify_logo.png',
+              width: 24.w,
+              height: 24.w,
+            ),
             icon: ImageIcon(
               const AssetImage('assets/images/spotify_small_logo.png'),
               size: 24.w,
