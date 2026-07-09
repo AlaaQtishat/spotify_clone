@@ -33,6 +33,7 @@ class WelcomeView extends StatelessWidget {
                 "Millions of songs,",
                 style: TextStyle(
                   fontSize: 32.sp,
+                  letterSpacing: -0.3.sp,
                   fontWeight: FontWeight.w700,
                   color: Colors.white,
                 ),
@@ -41,6 +42,7 @@ class WelcomeView extends StatelessWidget {
                 "Free on Spotify.",
                 style: TextStyle(
                   fontSize: 32.sp,
+                  letterSpacing: -0.3.sp,
                   fontWeight: FontWeight.w700,
                   color: Colors.white,
                 ),

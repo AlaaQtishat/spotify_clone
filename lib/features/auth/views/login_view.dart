@@ -23,7 +23,7 @@ class LoginView extends StatelessWidget {
                 child: IntrinsicHeight(
                   child: Column(
                     children: [
-                      Spacer(flex: 2),
+                      Spacer(flex: 3),
                       Align(
                         alignment: Alignment.center,
                         child: Image.asset(
