@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:spotify_clone/core/widgets/gradient_background.dart';
 import 'package:spotify_clone/core/widgets/songs_list.dart';
-import 'package:spotify_clone/features/library_screen/views/widgets/songs_listTile.dart';
 
 class AlbumView extends StatelessWidget {
   final String? imgLink;
@@ -85,9 +85,10 @@ class AlbumView extends StatelessWidget {
                             Text(
                               text!,
                               style: TextStyle(
+                                fontFamily: "Gotham",
                                 color: Colors.white,
                                 fontSize: 22.sp,
-                                fontWeight: FontWeight.bold,
+                                fontWeight: FontWeight.w700,
                                 height: 1.2,
                               ),
                               maxLines: 3,
@@ -118,10 +119,10 @@ class AlbumView extends StatelessWidget {
                           SizedBox(width: 8.sp),
                           Text(
                             "Spotify",
-                            style: TextStyle(
+                            style: GoogleFonts.poppins(
                               color: Colors.white,
-                              fontSize: 16.sp,
-                              fontWeight: FontWeight.bold,
+                              fontSize: 18.sp,
+                              fontWeight: FontWeight.w700,
                             ),
                           ),
                         ],
@@ -129,7 +130,7 @@ class AlbumView extends StatelessWidget {
                       SizedBox(height: 8.h),
                       Text(
                         "191,165 likes . 3h 45min",
-                        style: TextStyle(
+                        style: GoogleFonts.poppins(
                           color: Colors.grey.shade500,
                           fontSize: 14.sp,
                           fontWeight: FontWeight.w500,
@@ -144,9 +145,14 @@ class AlbumView extends StatelessWidget {
                               const Icon(
                                 Icons.favorite_outline_outlined,
                                 color: Colors.white,
+                                size: 28,
                               ),
                               SizedBox(width: 32.sp),
-                              const Icon(Icons.more_vert, color: Colors.white),
+                              const Icon(
+                                Icons.more_vert,
+                                color: Colors.white,
+                                size: 28,
+                              ),
                             ],
                           ),
                           Icon(

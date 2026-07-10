@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:spotify_clone/core/widgets/songs_list.dart';
 
 class LibraryView extends StatelessWidget {
@@ -42,9 +43,9 @@ class LibraryView extends StatelessWidget {
               SizedBox(height: 20.sp),
               Text(
                 "Tune in to Top Tracks from Imagine Dragons, Alan Walker and many more",
-                style: TextStyle(
+                style: GoogleFonts.poppins(
                   color: Colors.grey.shade500,
-                  fontSize: 15.sp,
+                  fontSize: 14.sp,
                   fontWeight: FontWeight.w500,
                 ),
               ),
@@ -60,10 +61,10 @@ class LibraryView extends StatelessWidget {
                   SizedBox(width: 8.sp),
                   Text(
                     "Spotify",
-                    style: TextStyle(
+                    style: GoogleFonts.poppins(
                       color: Colors.white,
                       fontSize: 18.sp,
-                      fontWeight: FontWeight.bold,
+                      fontWeight: FontWeight.w700,
                     ),
                   ),
                 ],
@@ -71,7 +72,7 @@ class LibraryView extends StatelessWidget {
               SizedBox(height: 16.h),
               Text(
                 "191,165 likes . 3h 45min",
-                style: TextStyle(
+                style: GoogleFonts.poppins(
                   color: Colors.grey.shade500,
                   fontSize: 14.sp,
                   fontWeight: FontWeight.w500,
@@ -86,9 +87,10 @@ class LibraryView extends StatelessWidget {
                       Icon(
                         Icons.favorite_outline_outlined,
                         color: Colors.white,
+                        size: 28,
                       ),
                       SizedBox(width: 32.sp),
-                      Icon(Icons.more_vert, color: Colors.white),
+                      Icon(Icons.more_vert, color: Colors.white, size: 28),
                     ],
                   ),
                   Icon(

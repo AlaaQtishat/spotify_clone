@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class CustomizedCard extends StatelessWidget {
   String text;
   String imgLink;
   final VoidCallback? onTap;
+  bool isMadeForYou;
   CustomizedCard({
     super.key,
     required this.text,
     required this.imgLink,
     this.onTap,
+    this.isMadeForYou = false,
   });
 
   @override
@@ -33,12 +36,19 @@ class CustomizedCard extends StatelessWidget {
               text,
               maxLines: 2,
               overflow: TextOverflow.ellipsis,
-              style: TextStyle(
-                color: Colors.grey.shade400,
-                fontSize: 14.sp,
-                fontWeight: FontWeight.w500,
-                height: 1.4,
-              ),
+              style: isMadeForYou
+                  ? GoogleFonts.poppins(
+                      color: Colors.grey.shade400,
+                      fontSize: 14.sp,
+                      fontWeight: FontWeight.w500,
+                      height: 1.4,
+                    )
+                  : GoogleFonts.poppins(
+                      color: Colors.grey.shade400,
+                      fontSize: 14.sp,
+                      fontWeight: FontWeight.w700,
+                      height: 1.4,
+                    ),
             ),
           ],
         ),

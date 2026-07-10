@@ -26,9 +26,10 @@ class SongsListTile extends StatelessWidget {
       title: Text(
         songTitle,
         style: TextStyle(
+          fontFamily: "Gotham",
           color: Colors.white,
           fontSize: 16.sp,
-          fontWeight: FontWeight.bold,
+          fontWeight: FontWeight.w700,
         ),
       ),
 
@@ -45,9 +46,10 @@ class SongsListTile extends StatelessWidget {
               child: Text(
                 "LYRICS",
                 style: TextStyle(
+                  fontFamily: "Gotham",
                   color: Colors.black,
                   fontSize: 9.sp,
-                  fontWeight: FontWeight.bold,
+                  fontWeight: FontWeight.w700,
                 ),
               ),
             ),
@@ -55,7 +57,13 @@ class SongsListTile extends StatelessWidget {
 
             Text(
               artistName,
-              style: TextStyle(color: Colors.grey.shade400, fontSize: 13.sp),
+              style: TextStyle(
+                fontFamily: "Gotham",
+                fontWeight: FontWeight.w500,
+                color: Colors.grey.shade400,
+                fontSize: 13.sp,
+                letterSpacing: -0.6,
+              ),
             ),
           ],
         ),

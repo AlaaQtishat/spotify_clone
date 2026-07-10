@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:spotify_clone/features/home_screen/views/widgets/customized_card.dart';
 
-class CustomHorizontalList extends StatelessWidget {
-  final List<Widget> cards;
+class CustomizedListView extends StatelessWidget {
+  final bool isMadeForYouSection;
+  final List<Map<String, dynamic>> items;
 
-  const CustomHorizontalList({super.key, required this.cards});
+  const CustomizedListView({
+    super.key,
+    required this.items,
+    this.isMadeForYouSection = false,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -12,13 +18,24 @@ class CustomHorizontalList extends StatelessWidget {
       height: 250.h,
       child: ListView.separated(
         scrollDirection: Axis.horizontal,
-        padding: EdgeInsets.symmetric(horizontal: 16.w),
-
-        itemCount: cards.length,
+        itemCount: items.length,
 
         separatorBuilder: (context, index) => SizedBox(width: 16.w),
 
-        itemBuilder: (context, index) => cards[index],
+        itemBuilder: (context, index) {
+          final item = items[index];
+
+          return CustomizedCard(
+            isMadeForYou: isMadeForYouSection,
+            onTap: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => item["destination"]),
+              );
+            },
+            text: item["text"],
+            imgLink: item["imgLink"],
+          );
+        },
       ),
     );
   }

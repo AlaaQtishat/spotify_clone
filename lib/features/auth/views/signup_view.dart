@@ -23,7 +23,7 @@ class SignupView extends StatelessWidget {
           CustomizedTextfield(text: "Username"),
           SizedBox(height: 12.h),
           CustomizedTextfield(text: "Password"),
-          SizedBox(height: 60.h),
+          SizedBox(height: 98.h),
           CustomizedElevatedButton(
             text: "Sign up",
             onPressed: () {

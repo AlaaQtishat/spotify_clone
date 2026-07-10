@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'package:spotify_clone/core/widgets/gradient_background.dart';
 import 'package:spotify_clone/features/home_screen/views/home_view.dart';
 import 'package:spotify_clone/features/library_screen/views/library_view.dart';

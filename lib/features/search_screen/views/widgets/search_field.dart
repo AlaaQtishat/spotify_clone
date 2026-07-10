@@ -11,9 +11,10 @@ class SearchField extends StatelessWidget {
         prefixIcon: Icon(Icons.search, color: Colors.black),
         hintText: "Artists, songs, or podcasts",
         hintStyle: TextStyle(
+          fontFamily: "Gotham",
           color: Colors.grey.shade700,
           fontSize: 18.sp,
-          fontWeight: FontWeight.bold,
+          fontWeight: FontWeight.w700,
         ),
         filled: true,
         fillColor: Colors.white,

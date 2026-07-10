@@ -96,16 +96,21 @@ class MusicPlayerView extends StatelessWidget {
                       Text(
                         songTitle,
                         style: TextStyle(
+                          fontFamily: "Gotham",
                           color: Colors.white,
                           fontSize: 24.sp,
                           fontWeight: FontWeight.w700,
+                          letterSpacing: -0.5,
                         ),
                       ),
                       Text(
                         artistName,
                         style: TextStyle(
+                          fontFamily: "Gotham",
                           color: Colors.grey.shade300,
                           fontWeight: FontWeight.w500,
+                          fontSize: 21.sp,
+                          letterSpacing: -0.8,
                         ),
                       ),
                     ],

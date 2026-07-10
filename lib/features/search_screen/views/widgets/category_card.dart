@@ -22,9 +22,11 @@ class CategoryCard extends StatelessWidget {
           child: Text(
             title,
             style: TextStyle(
+              fontFamily: "Gotham",
               color: Colors.white,
               fontSize: 20.sp,
-              fontWeight: FontWeight.bold,
+              fontWeight: FontWeight.w700,
+              letterSpacing: -0.4,
             ),
           ),
         ),

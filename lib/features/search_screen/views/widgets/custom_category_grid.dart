@@ -4,8 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:spotify_clone/features/search_screen/views/widgets/category_card.dart';
 
 class CustomCategoryGrid extends StatelessWidget {
-  List categories;
-
+  final List<Map<String, dynamic>> categories;
   CustomCategoryGrid({super.key, required this.categories});
 
   @override
@@ -24,10 +23,8 @@ class CustomCategoryGrid extends StatelessWidget {
       ),
 
       itemBuilder: (context, index) {
-        return CategoryCard(
-          title: categories[index].title,
-          color: categories[index].color,
-        );
+        var category = categories[index];
+        return CategoryCard(title: category["title"], color: category["color"]);
       },
     );
   }
