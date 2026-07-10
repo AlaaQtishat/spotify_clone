@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:spotify_clone/core/constants/app_colors.dart';
 
 class CustomizedOutlinedButton extends StatelessWidget {
@@ -28,9 +29,10 @@ class CustomizedOutlinedButton extends StatelessWidget {
             child: Text(
               text,
               textAlign: TextAlign.center,
-              style: TextStyle(
+              style: GoogleFonts.poppins(
                 color: Colors.white,
                 fontWeight: FontWeight.w700,
+                letterSpacing: -0.4.sp,
                 fontSize: 20.sp,
               ),
             ),

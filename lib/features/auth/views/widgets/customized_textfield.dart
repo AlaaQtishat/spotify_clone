@@ -8,9 +8,9 @@ class CustomizedTextfield extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 24.0),
+      padding: const EdgeInsets.symmetric(horizontal: 16.0),
       child: SizedBox(
-        height: 44.h,
+        height: 50.h,
         width: double.infinity,
         child: TextField(
           cursorColor: Colors.grey.shade600,

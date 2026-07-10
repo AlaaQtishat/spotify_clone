@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:spotify_clone/core/constants/app_colors.dart';
 
 class CustomizedElevatedButton extends StatelessWidget {
@@ -21,7 +22,8 @@ class CustomizedElevatedButton extends StatelessWidget {
       ),
       child: Text(
         text,
-        style: TextStyle(
+        style: GoogleFonts.poppins(
+          letterSpacing: -0.3.sp,
           color: Colors.black,
           fontWeight: FontWeight.w700,
           fontSize: 21.sp,

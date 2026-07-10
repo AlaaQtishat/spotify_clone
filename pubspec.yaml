@@ -35,6 +35,7 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.8
   flutter_screenutil: ^5.9.3
+  google_fonts: ^6.1.0
 
 
 dev_dependencies:
@@ -53,7 +54,15 @@ dev_dependencies:
 
 # The following section is specific to Flutter packages.
 flutter:
-
+  fonts:
+    - family: Gotham
+      fonts:
+        - asset: assets/fonts/Gotham-Book.otf
+          weight: 400
+        - asset: assets/fonts/Gotham-Medium.otf
+          weight: 500
+        - asset: assets/fonts/Gotham-Bold.otf
+          weight: 700
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
