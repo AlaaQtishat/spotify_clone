@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:spotify_clone/features/library_screen/views/widgets/songs_listTile.dart';
+import 'package:spotify_clone/core/widgets/songs_list.dart';
 
 class LibraryView extends StatelessWidget {
   const LibraryView({super.key});
@@ -98,37 +98,7 @@ class LibraryView extends StatelessWidget {
                   ),
                 ],
               ),
-              //SizedBox(height: 30.h),
-              SongsListTile(
-                songTitle: "Alone",
-                artistName: "Alan Walker",
-                imagePath: "assets/images/alone.jpg",
-              ),
-              SongsListTile(
-                songTitle: "Let me love you",
-                artistName: "Justin Bieber feat DJ Snake",
-                imagePath: "assets/images/letmeloveyou.jpg",
-              ),
-              SongsListTile(
-                songTitle: "Ignite",
-                artistName: "Alan Walker",
-                imagePath: "assets/images/ignite.png",
-              ),
-              SongsListTile(
-                songTitle: "Taki Taki",
-                artistName: "DJ Snake feat Selena Gomez",
-                imagePath: "assets/images/taki.jpg",
-              ),
-              SongsListTile(
-                songTitle: "Believer",
-                artistName: "Imagine Dragons",
-                imagePath: "assets/images/believer.jpg",
-              ),
-              SongsListTile(
-                songTitle: "Perfect",
-                artistName: "Ed Sheeran",
-                imagePath: "assets/images/perfect.png",
-              ),
+              SongsList(),
             ],
           ),
         ),

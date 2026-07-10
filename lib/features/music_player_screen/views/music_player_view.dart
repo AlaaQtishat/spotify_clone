@@ -2,7 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class MusicPlayerView extends StatelessWidget {
-  const MusicPlayerView({super.key});
+  final String songTitle;
+  final String artistName;
+  final String imgLink;
+  const MusicPlayerView({
+    super.key,
+    required this.songTitle,
+    required this.artistName,
+    required this.imgLink,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +52,7 @@ class MusicPlayerView extends StatelessWidget {
               ),
               SizedBox(height: 2.h),
               Text(
-                '“stay” in Songs',
+                '“$songTitle” in Songs',
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 16.sp,
@@ -71,9 +79,9 @@ class MusicPlayerView extends StatelessWidget {
               SizedBox(height: 40.h),
               Container(
                 child: Image.asset(
-                  "assets/images/stay.jpg",
+                  imgLink,
                   fit: BoxFit.cover,
-                  //   height: 380.h,
+                  height: 380.h,
                   width: double.infinity,
                 ),
               ),
@@ -86,7 +94,7 @@ class MusicPlayerView extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "STAY (with Justin Bieber)",
+                        songTitle,
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 24.sp,
@@ -94,7 +102,7 @@ class MusicPlayerView extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        "The Kid LAROI, Justin Bieber",
+                        artistName,
                         style: TextStyle(
                           color: Colors.grey.shade300,
                           fontWeight: FontWeight.w500,
