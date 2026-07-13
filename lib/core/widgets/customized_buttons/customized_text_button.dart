@@ -3,14 +3,13 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class CustomizedTextButton extends StatelessWidget {
-  String text;
-  Color textColor;
-  VoidCallback onPressed;
-  double? fontSize;
-  CustomizedTextButton({
+  final String text;
+  final Color textColor;
+  final VoidCallback onPressed;
+  final double? fontSize;
+  const CustomizedTextButton({
     super.key,
     required this.text,
-
     required this.onPressed,
     this.textColor = Colors.white,
     this.fontSize,

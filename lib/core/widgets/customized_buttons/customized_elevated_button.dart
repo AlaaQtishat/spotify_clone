@@ -4,9 +4,13 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:spotify_clone/core/constants/app_colors.dart';
 
 class CustomizedElevatedButton extends StatelessWidget {
-  String text;
-  VoidCallback? onPressed;
-  CustomizedElevatedButton({super.key, required this.text, this.onPressed});
+  final String text;
+  final VoidCallback? onPressed;
+  const CustomizedElevatedButton({
+    super.key,
+    required this.text,
+    this.onPressed,
+  });
 
   @override
   Widget build(BuildContext context) {

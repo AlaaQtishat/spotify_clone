@@ -49,7 +49,6 @@ class AlbumView extends StatelessWidget {
           ],
         ),
         backgroundColor: Colors.transparent,
-        extendBody: false,
         body: SafeArea(
           child: SingleChildScrollView(
             child: Column(

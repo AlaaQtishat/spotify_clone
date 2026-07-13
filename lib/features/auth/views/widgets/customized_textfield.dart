@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomizedTextfield extends StatelessWidget {
-  String text;
-  CustomizedTextfield({super.key, required this.text});
+  final String text;
+  const CustomizedTextfield({super.key, required this.text});
 
   @override
   Widget build(BuildContext context) {

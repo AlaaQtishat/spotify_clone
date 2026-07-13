@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:spotify_clone/core/constants/app_colors.dart';
 
 class CustomizedOutlinedButton extends StatelessWidget {
-  String text;
-  Widget icon;
-  CustomizedOutlinedButton({super.key, required this.text, required this.icon});
+  final String text;
+  final Widget icon;
+  const CustomizedOutlinedButton({
+    super.key,
+    required this.text,
+    required this.icon,
+  });
 
   @override
   Widget build(BuildContext context) {

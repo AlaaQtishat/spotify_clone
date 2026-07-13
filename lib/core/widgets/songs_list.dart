@@ -42,15 +42,15 @@ class SongsList extends StatelessWidget {
     return ListView.builder(
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
-
       padding: EdgeInsets.zero,
       itemCount: _songsList.length,
 
       itemBuilder: (context, index) {
+        var song = _songsList[index];
         return SongsListTile(
-          songTitle: _songsList[index]["title"]!,
-          artistName: _songsList[index]["artist"]!,
-          imagePath: _songsList[index]["image"]!,
+          songTitle: song["title"]!,
+          artistName: song["artist"]!,
+          imagePath: song["image"]!,
         );
       },
     );
