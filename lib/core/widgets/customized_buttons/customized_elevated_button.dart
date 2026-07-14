@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:spotify_clone/core/constants/app_colors.dart';
 
 class CustomizedElevatedButton extends StatelessWidget {
-  final String text;
+  final Widget content;
   final VoidCallback? onPressed;
   const CustomizedElevatedButton({
     super.key,
-    required this.text,
+    required this.content,
     this.onPressed,
   });
 
@@ -24,15 +23,7 @@ class CustomizedElevatedButton extends StatelessWidget {
         ),
         fixedSize: Size(380.w, 54.h),
       ),
-      child: Text(
-        text,
-        style: GoogleFonts.poppins(
-          letterSpacing: -0.3.sp,
-          color: Colors.black,
-          fontWeight: FontWeight.w700,
-          fontSize: 21.sp,
-        ),
-      ),
+      child: content,
     );
   }
 }

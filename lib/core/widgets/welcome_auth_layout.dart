@@ -30,7 +30,7 @@ class WelcomeAuthLayout extends StatelessWidget {
                     padding: EdgeInsets.symmetric(horizontal: 16.w),
                     child: Column(
                       children: [
-                        SizedBox(height: 160.h),
+                        SizedBox(height: 120.h),
 
                         Align(
                           alignment: Alignment.center,
@@ -70,7 +70,7 @@ class WelcomeAuthLayout extends StatelessWidget {
                           text: bottomButtonText,
                           onPressed: onBottomButtonPressed,
                         ),
-                        SizedBox(height: 128.h),
+                        SizedBox(height: 180.h),
                       ],
                     ),
                   ),

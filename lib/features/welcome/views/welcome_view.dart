@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:spotify_clone/core/widgets/customized_buttons/customized_elevated_button.dart';
 import 'package:spotify_clone/core/widgets/welcome_auth_layout.dart';
 import 'package:spotify_clone/features/auth/views/signup_view.dart';
@@ -22,7 +23,15 @@ class WelcomeView extends StatelessWidget {
         children: [
           SizedBox(height: 15.h),
           CustomizedElevatedButton(
-            text: "Sign up free",
+            content: Text(
+              "Sign up free",
+              style: GoogleFonts.poppins(
+                letterSpacing: -0.3.sp,
+                color: Colors.black,
+                fontWeight: FontWeight.w700,
+                fontSize: 21.sp,
+              ),
+            ),
             onPressed: () {
               Navigator.of(context).push(
                 MaterialPageRoute(builder: (context) => const SignupView()),
