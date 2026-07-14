@@ -5,6 +5,7 @@ import 'package:spotify_clone/core/widgets/customized_buttons/customized_elevate
 import 'package:spotify_clone/core/widgets/customized_buttons/customized_text_button.dart';
 import 'package:spotify_clone/core/widgets/welcome_auth_layout.dart';
 import 'package:spotify_clone/features/auth/auth_controller.dart';
+import 'package:spotify_clone/features/auth/views/forget_password_screen.dart';
 import 'package:spotify_clone/features/auth/views/signup_view.dart';
 import 'package:spotify_clone/features/auth/views/widgets/customized_textfield.dart';
 import 'package:spotify_clone/features/main_layout/views/main_layout_view.dart';
@@ -22,6 +23,14 @@ class _LoginViewState extends State<LoginView> {
   final _formKey = GlobalKey<FormState>();
   bool isLoading = false;
   AuthController authController = AuthController();
+
+  @override
+  void dispose() {
+    emailController.dispose();
+    passwordController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -83,7 +92,13 @@ class _LoginViewState extends State<LoginView> {
               alignment: Alignment.centerRight,
               child: CustomizedTextButton(
                 text: "Forgot password?",
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => ForgetPasswordScreen(),
+                    ),
+                  );
+                },
                 textColor: const Color(0xFF4CAF50),
                 fontSize: 16.sp,
               ),
