@@ -1,6 +1,8 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:spotify_clone/core/constants/app_colors.dart';
+import 'package:spotify_clone/features/main_layout/views/main_layout_view.dart';
 import 'package:spotify_clone/features/welcome/views/welcome_view.dart';
 
 class SplashView extends StatefulWidget {
@@ -11,11 +13,12 @@ class SplashView extends StatefulWidget {
 }
 
 class _SplashViewState extends State<SplashView> {
+  final User? user = FirebaseAuth.instance.currentUser;
   @override
   void initState() {
     super.initState();
 
-    _navigateToSignup();
+    _navigateBasedOnAuth();
   }
 
   @override
@@ -34,12 +37,19 @@ class _SplashViewState extends State<SplashView> {
     );
   }
 
-  void _navigateToSignup() {
+  void _navigateBasedOnAuth() {
     Future.delayed(const Duration(seconds: 3), () {
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) => const WelcomeView()),
-      );
+      if (user != null) {
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => const MainLayoutView()),
+        );
+      } else {
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => WelcomeView()),
+        );
+      }
     });
   }
 }

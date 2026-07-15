@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class AuthService {
   final FirebaseAuth auth = FirebaseAuth.instance;
@@ -35,6 +36,18 @@ class AuthService {
 
   Future<void> resetPassword(String email) async {
     await auth.sendPasswordResetEmail(email: email);
+  }
+
+  Future<void> facebookLogin() async {
+    final Uri url = Uri.parse("https://www.facebook.com/login");
+
+    await launchUrl(url, mode: LaunchMode.externalApplication);
+  }
+
+  Future<void> googleLogin() async {
+    final Uri url = Uri.parse("https://accounts.google.com/signin");
+
+    await launchUrl(url, mode: LaunchMode.externalApplication);
   }
 
   Future<void> logout() async {

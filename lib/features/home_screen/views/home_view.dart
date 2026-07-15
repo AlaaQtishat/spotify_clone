@@ -41,9 +41,11 @@ class HomeView extends StatelessWidget {
                         ),
                       ),
                       IconButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Scaffold.of(context).openEndDrawer();
+                        },
                         icon: const Icon(
-                          Icons.settings_outlined,
+                          Icons.menu_rounded,
                           color: Colors.white,
                         ),
                       ),

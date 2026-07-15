@@ -5,16 +5,18 @@ import 'package:google_fonts/google_fonts.dart';
 class CustomizedOutlinedButton extends StatelessWidget {
   final String text;
   final Widget icon;
+  final VoidCallback? onPressed;
   const CustomizedOutlinedButton({
     super.key,
     required this.text,
     required this.icon,
+    this.onPressed,
   });
 
   @override
   Widget build(BuildContext context) {
     return OutlinedButton(
-      onPressed: () {},
+      onPressed: onPressed,
 
       style: OutlinedButton.styleFrom(
         //backgroundColor: AppColors.elevatedButtonBackground,

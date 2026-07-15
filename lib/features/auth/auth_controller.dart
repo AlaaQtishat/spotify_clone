@@ -49,6 +49,24 @@ class AuthController {
     }
   }
 
+  Future<String?> facebookLogin() async {
+    try {
+      await authService.facebookLogin();
+      return null;
+    } catch (e) {
+      return "something went wrong, please try again later.";
+    }
+  }
+
+  Future<String?> googleLogin() async {
+    try {
+      await authService.googleLogin();
+      return null;
+    } catch (e) {
+      return "something went wrong, please try again later.";
+    }
+  }
+
   Future<String?> logout() async {
     try {
       await authService.logout();
