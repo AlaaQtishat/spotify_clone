@@ -4,7 +4,7 @@ import 'package:spotify_clone/core/constants/app_colors.dart';
 import 'package:spotify_clone/core/data/app_data.dart';
 import 'package:spotify_clone/core/models/song_model.dart';
 import 'package:spotify_clone/core/widgets/section_title.dart';
-import 'package:spotify_clone/features/library_screen/widgets/songs_listTile.dart';
+import 'package:spotify_clone/core/widgets/songs_listTile.dart';
 import 'package:spotify_clone/features/music_player_screen/music_player_screen.dart';
 import 'package:spotify_clone/features/search_screen/widgets/custom_category_grid.dart';
 import 'package:spotify_clone/features/search_screen/widgets/search_field.dart';
