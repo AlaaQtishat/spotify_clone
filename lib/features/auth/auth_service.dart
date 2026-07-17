@@ -22,7 +22,6 @@ class AuthService {
         'uid': userCredential.user!.uid,
         'full_name': name,
         'email': email,
-        'photoUrl': "",
       });
     }
   }

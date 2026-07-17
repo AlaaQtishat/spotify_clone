@@ -3,9 +3,10 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:spotify_clone/core/models/song_model.dart';
 
 class MusicPlayerScreen extends StatefulWidget {
-  final List<Map<String, dynamic>> playlist;
+  final List<SongModel> playlist;
   final int initialIndex;
 
   const MusicPlayerScreen({
@@ -48,7 +49,7 @@ class _MusicPlayerScreenState extends State<MusicPlayerScreen> {
     });
   }
 
-  Future<void> toggleFavorite(Map<String, dynamic> currentSong) async {
+  Future<void> toggleFavorite(SongModel currentSong) async {
     final user = FirebaseAuth.instance.currentUser;
     if (user == null) return;
 
@@ -56,7 +57,7 @@ class _MusicPlayerScreenState extends State<MusicPlayerScreen> {
         .collection('users')
         .doc(user.uid)
         .collection('favorites')
-        .doc(currentSong['title']);
+        .doc(currentSong.title);
 
     final doc = await docRef.get();
 
@@ -64,10 +65,10 @@ class _MusicPlayerScreenState extends State<MusicPlayerScreen> {
       await docRef.delete();
     } else {
       await docRef.set({
-        "title": currentSong['title'],
-        "artist": currentSong['artist'],
-        "image": currentSong['image'],
-        "audioPath": currentSong['audioPath'],
+        "title": currentSong.title,
+        "artist": currentSong.artist,
+        "image": currentSong.image,
+        "audioPath": currentSong.audioPath,
         "addedAt": FieldValue.serverTimestamp(),
       });
     }
@@ -75,7 +76,7 @@ class _MusicPlayerScreenState extends State<MusicPlayerScreen> {
 
   void playCurrentSong() async {
     final song = widget.playlist[currentIndex];
-    await audioPlayer.play(AssetSource(song['audioPath']));
+    await audioPlayer.play(AssetSource(song.audioPath));
   }
 
   void togglePlayPause() async {
@@ -181,7 +182,7 @@ class _MusicPlayerScreenState extends State<MusicPlayerScreen> {
               ),
               SizedBox(height: 2.h),
               Text(
-                '“${currentSong['title']}” in Songs',
+                '“${currentSong.title}” in Songs',
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 16.sp,
@@ -207,7 +208,7 @@ class _MusicPlayerScreenState extends State<MusicPlayerScreen> {
             children: [
               SizedBox(height: 40.h),
               Image.asset(
-                currentSong['image'],
+                currentSong.image,
                 fit: BoxFit.cover,
                 height: 380.h,
                 width: double.infinity,
@@ -222,7 +223,7 @@ class _MusicPlayerScreenState extends State<MusicPlayerScreen> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          currentSong['title'],
+                          currentSong.title,
                           style: TextStyle(
                             fontFamily: "Gotham",
                             color: Colors.white,
@@ -234,7 +235,7 @@ class _MusicPlayerScreenState extends State<MusicPlayerScreen> {
                           overflow: TextOverflow.ellipsis,
                         ),
                         Text(
-                          currentSong['artist'],
+                          currentSong.artist,
                           style: TextStyle(
                             fontFamily: "Gotham",
                             color: Colors.grey.shade300,
@@ -254,7 +255,7 @@ class _MusicPlayerScreenState extends State<MusicPlayerScreen> {
                         .collection('users')
                         .doc(FirebaseAuth.instance.currentUser?.uid)
                         .collection('favorites')
-                        .doc(currentSong['title'])
+                        .doc(currentSong.title)
                         .snapshots(),
                     builder: (context, snapshot) {
                       bool isFavorite =

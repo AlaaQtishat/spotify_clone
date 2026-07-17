@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:spotify_clone/core/constants/app_colors.dart';
 import 'package:spotify_clone/core/data/app_data.dart';
+import 'package:spotify_clone/core/models/song_model.dart';
 import 'package:spotify_clone/core/widgets/section_title.dart';
 import 'package:spotify_clone/features/library_screen/widgets/songs_listTile.dart';
 import 'package:spotify_clone/features/music_player_screen/music_player_screen.dart';
@@ -16,22 +17,22 @@ class SearchScreen extends StatefulWidget {
 }
 
 class _SearchScreenState extends State<SearchScreen> {
-  final List<Map<String, dynamic>> allSongs = [
+  final List<SongModel> allSongs = [
     ...AppData.madeForYouData,
     ...AppData.trendingNowData,
     ...AppData.topPicksData,
     ...AppData.libraryData,
   ];
 
-  List<Map<String, dynamic>> displayedSongs = [];
+  List<SongModel> displayedSongs = [];
   final TextEditingController searchController = TextEditingController();
 
   void startSearch(String enteredKeyword) {
-    List<Map<String, dynamic>> results = [];
+    List<SongModel> results = [];
 
     for (var song in allSongs) {
-      final songTitle = song["title"].toLowerCase();
-      final artistName = song["artist"].toLowerCase();
+      final songTitle = song.title.toLowerCase();
+      final artistName = song.artist.toLowerCase();
       final searchInput = enteredKeyword.toLowerCase();
 
       if (songTitle.contains(searchInput) || artistName.contains(searchInput)) {
@@ -135,9 +136,9 @@ class _SearchScreenState extends State<SearchScreen> {
                             return Padding(
                               padding: EdgeInsets.only(bottom: 16.h),
                               child: SongsListTile(
-                                songTitle: song["title"],
-                                artistName: song["artist"],
-                                imagePath: song["image"],
+                                songTitle: song.title,
+                                artistName: song.artist,
+                                imagePath: song.image,
                                 onTap: () {
                                   Navigator.push(
                                     context,

@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:spotify_clone/core/models/song_model.dart';
 import 'package:spotify_clone/features/library_screen/widgets/songs_listTile.dart';
 import 'package:spotify_clone/features/music_player_screen/music_player_screen.dart';
 
@@ -51,11 +52,16 @@ class FavoritesScreen extends StatelessWidget {
               ),
             );
           }
-
           final favoriteDocs = snapshot.data!.docs;
-          final List<Map<String, dynamic>> favoriteSongs = favoriteDocs
-              .map((doc) => doc.data() as Map<String, dynamic>)
-              .toList();
+          final List<SongModel> favoriteSongs = favoriteDocs.map((doc) {
+            final data = doc.data() as Map<String, dynamic>;
+            return SongModel(
+              title: data['title'],
+              artist: data['artist'],
+              image: data['image'],
+              audioPath: data['audioPath'],
+            );
+          }).toList();
 
           return ListView.builder(
             padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 10.h),
@@ -66,9 +72,9 @@ class FavoritesScreen extends StatelessWidget {
               return Padding(
                 padding: EdgeInsets.only(bottom: 16.h),
                 child: SongsListTile(
-                  songTitle: song["title"],
-                  artistName: song["artist"],
-                  imagePath: song["image"],
+                  songTitle: song.title,
+                  artistName: song.artist,
+                  imagePath: song.image,
                   onTap: () {
                     Navigator.push(
                       context,
