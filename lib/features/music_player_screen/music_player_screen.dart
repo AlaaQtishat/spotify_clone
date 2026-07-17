@@ -19,36 +19,36 @@ class MusicPlayerScreen extends StatefulWidget {
 }
 
 class _MusicPlayerScreenState extends State<MusicPlayerScreen> {
-  final AudioPlayer _audioPlayer = AudioPlayer();
+  final AudioPlayer audioPlayer = AudioPlayer();
   bool isPlaying = false;
   late int currentIndex;
 
-  Duration _duration = Duration.zero; //the length of the song
-  Duration _position = Duration.zero; //where am I as of the length of the song
+  Duration duration = Duration.zero; //the length of the song
+  Duration position = Duration.zero; //where am I as of the length of the song
 
   @override
   void initState() {
     super.initState();
     currentIndex = widget.initialIndex;
 
-    _audioPlayer.onDurationChanged.listen((newDuration) {
+    audioPlayer.onDurationChanged.listen((newDuration) {
       setState(() {
-        _duration = newDuration;
+        duration = newDuration;
       });
     });
 
-    _audioPlayer.onPositionChanged.listen((newPosition) {
+    audioPlayer.onPositionChanged.listen((newPosition) {
       setState(() {
-        _position = newPosition;
+        position = newPosition;
       });
     });
 
-    _audioPlayer.onPlayerComplete.listen((event) {
-      _nextSong();
+    audioPlayer.onPlayerComplete.listen((event) {
+      nextSong();
     });
   }
 
-  Future<void> _toggleFavorite(Map<String, dynamic> currentSong) async {
+  Future<void> toggleFavorite(Map<String, dynamic> currentSong) async {
     final user = FirebaseAuth.instance.currentUser;
     if (user == null) return;
 
@@ -68,23 +68,24 @@ class _MusicPlayerScreenState extends State<MusicPlayerScreen> {
         "artist": currentSong['artist'],
         "image": currentSong['image'],
         "audioPath": currentSong['audioPath'],
+        "addedAt": FieldValue.serverTimestamp(),
       });
     }
   }
 
-  void _playCurrentSong() async {
+  void playCurrentSong() async {
     final song = widget.playlist[currentIndex];
-    await _audioPlayer.play(AssetSource(song['audioPath']));
+    await audioPlayer.play(AssetSource(song['audioPath']));
   }
 
-  void _togglePlayPause() async {
+  void togglePlayPause() async {
     if (isPlaying) {
-      await _audioPlayer.pause();
+      await audioPlayer.pause();
     } else {
-      if (_position == Duration.zero) {
-        _playCurrentSong();
+      if (position == Duration.zero) {
+        playCurrentSong();
       } else {
-        await _audioPlayer.resume();
+        await audioPlayer.resume();
       }
     }
     setState(() {
@@ -92,31 +93,31 @@ class _MusicPlayerScreenState extends State<MusicPlayerScreen> {
     });
   }
 
-  void _nextSong() {
+  void nextSong() {
     if (currentIndex < widget.playlist.length - 1) {
-      _audioPlayer.stop();
+      audioPlayer.stop();
       setState(() {
         currentIndex++;
         isPlaying = true;
-        _position = Duration.zero;
+        position = Duration.zero;
       });
-      _playCurrentSong();
+      playCurrentSong();
     }
   }
 
-  void _previousSong() {
+  void previousSong() {
     if (currentIndex > 0) {
-      _audioPlayer.stop();
+      audioPlayer.stop();
       setState(() {
         currentIndex--;
         isPlaying = true;
-        _position = Duration.zero;
+        position = Duration.zero;
       });
-      _playCurrentSong();
+      playCurrentSong();
     }
   }
 
-  String _formatDuration(Duration duration) {
+  String formatDuration(Duration duration) {
     int minutes = duration.inMinutes;
     int seconds = duration.inSeconds % 60;
 
@@ -135,7 +136,7 @@ class _MusicPlayerScreenState extends State<MusicPlayerScreen> {
 
   @override
   void dispose() {
-    _audioPlayer.dispose();
+    audioPlayer.dispose();
     super.dispose();
   }
 
@@ -267,7 +268,7 @@ class _MusicPlayerScreenState extends State<MusicPlayerScreen> {
                           color: isFavorite ? Colors.green : Colors.white,
                           size: 32.sp,
                         ),
-                        onPressed: () => _toggleFavorite(currentSong),
+                        onPressed: () => toggleFavorite(currentSong),
                       );
                     },
                   ),
@@ -279,7 +280,7 @@ class _MusicPlayerScreenState extends State<MusicPlayerScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    _formatDuration(_position),
+                    formatDuration(position),
                     style: TextStyle(
                       color: Colors.grey.shade300,
                       fontSize: 12.sp,
@@ -287,7 +288,7 @@ class _MusicPlayerScreenState extends State<MusicPlayerScreen> {
                   ),
 
                   Text(
-                    _formatDuration(_duration),
+                    formatDuration(duration),
                     style: TextStyle(
                       color: Colors.grey.shade300,
                       fontSize: 12.sp,
@@ -300,12 +301,12 @@ class _MusicPlayerScreenState extends State<MusicPlayerScreen> {
                 padding: EdgeInsets.zero,
                 inactiveColor: Colors.grey.shade600,
                 activeColor: Colors.white,
-                value: _position.inSeconds.toDouble(),
+                value: position.inSeconds.toDouble(),
                 min: 0,
-                max: _duration.inSeconds.toDouble(),
+                max: duration.inSeconds.toDouble(),
                 onChanged: (value) async {
                   final position = Duration(seconds: value.toInt());
-                  await _audioPlayer.seek(position);
+                  await audioPlayer.seek(position);
                 },
               ),
               Row(
@@ -320,7 +321,7 @@ class _MusicPlayerScreenState extends State<MusicPlayerScreen> {
                       color: Colors.white,
                       size: 50.sp,
                     ),
-                    onPressed: _previousSong,
+                    onPressed: previousSong,
                   ),
 
                   IconButton(
@@ -330,7 +331,7 @@ class _MusicPlayerScreenState extends State<MusicPlayerScreen> {
                       color: Colors.white,
                       size: 80.sp,
                     ),
-                    onPressed: _togglePlayPause,
+                    onPressed: togglePlayPause,
                   ),
 
                   IconButton(
@@ -340,7 +341,7 @@ class _MusicPlayerScreenState extends State<MusicPlayerScreen> {
                       color: Colors.white,
                       size: 50.sp,
                     ),
-                    onPressed: _nextSong,
+                    onPressed: nextSong,
                   ),
 
                   IconButton(

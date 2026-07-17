@@ -41,9 +41,10 @@ class RightDrawer extends StatelessWidget {
           SizedBox(height: 16.h),
           ListTile(
             onTap: () {
-              Navigator.of(
-                context,
-              ).push(MaterialPageRoute(builder: (context) => FavoritesView()));
+              Navigator.pop(context);
+              Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => FavoritesScreen()),
+              );
             },
             titleAlignment: ListTileTitleAlignment.center,
             title: Text(
