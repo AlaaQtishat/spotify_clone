@@ -2,13 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SearchField extends StatelessWidget {
-  const SearchField({super.key});
+  final TextEditingController controller;
+  final Function(String) onChanged;
+
+  const SearchField({
+    super.key,
+    required this.controller,
+    required this.onChanged,
+  });
 
   @override
   Widget build(BuildContext context) {
     return TextField(
+      controller: controller,
+      onChanged: onChanged,
       decoration: InputDecoration(
-        prefixIcon: Icon(Icons.search, color: Colors.black),
+        prefixIcon: const Icon(Icons.search, color: Colors.black),
         hintText: "Artists, songs, or podcasts",
         hintStyle: TextStyle(
           fontFamily: "Gotham",
