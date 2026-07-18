@@ -17,7 +17,6 @@ class AuthService {
     );
     if (userCredential.user != null) {
       await userCredential.user!.updateDisplayName(name);
-      await userCredential.user!.reload();
       await firestore.collection('users').doc(userCredential.user!.uid).set({
         'uid': userCredential.user!.uid,
         'full_name': name,

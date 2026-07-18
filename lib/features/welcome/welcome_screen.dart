@@ -4,13 +4,13 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:spotify_clone/core/widgets/customized_buttons/customized_elevated_button.dart';
 import 'package:spotify_clone/core/widgets/welcome_auth_layout.dart';
 import 'package:spotify_clone/features/auth/auth_controller.dart';
-import 'package:spotify_clone/features/auth/screens/signup_view.dart';
-import 'package:spotify_clone/features/auth/screens/login_view.dart';
+import 'package:spotify_clone/features/auth/screens/signup_screen.dart';
+import 'package:spotify_clone/features/auth/screens/login_screen.dart';
 import 'package:spotify_clone/features/welcome/widgets/customized_outlined_button.dart';
 
 class WelcomeScreen extends StatelessWidget {
   WelcomeScreen({super.key});
-  AuthController authController = AuthController();
+  final AuthController authController = AuthController();
   @override
   Widget build(BuildContext context) {
     return WelcomeAuthLayout(
@@ -18,7 +18,7 @@ class WelcomeScreen extends StatelessWidget {
       onBottomButtonPressed: () {
         Navigator.of(
           context,
-        ).push(MaterialPageRoute(builder: (context) => const LoginView()));
+        ).push(MaterialPageRoute(builder: (context) => const LoginScreen()));
       },
       child: Column(
         children: [
@@ -35,7 +35,7 @@ class WelcomeScreen extends StatelessWidget {
             ),
             onPressed: () {
               Navigator.of(context).push(
-                MaterialPageRoute(builder: (context) => const SignupView()),
+                MaterialPageRoute(builder: (context) => const SignupScreen()),
               );
             },
           ),

@@ -6,18 +6,18 @@ import 'package:spotify_clone/core/widgets/customized_buttons/customized_text_bu
 import 'package:spotify_clone/core/widgets/welcome_auth_layout.dart';
 import 'package:spotify_clone/features/auth/auth_controller.dart';
 import 'package:spotify_clone/features/auth/screens/forget_password_screen.dart';
-import 'package:spotify_clone/features/auth/screens/signup_view.dart';
+import 'package:spotify_clone/features/auth/screens/signup_screen.dart';
 import 'package:spotify_clone/features/auth/screens/widgets/customized_textfield.dart';
 import 'package:spotify_clone/features/main_layout/main_layout_screen.dart';
 
-class LoginView extends StatefulWidget {
-  const LoginView({super.key});
+class LoginScreen extends StatefulWidget {
+  const LoginScreen({super.key});
 
   @override
-  State<LoginView> createState() => _LoginViewState();
+  State<LoginScreen> createState() => _LoginScreenState();
 }
 
-class _LoginViewState extends State<LoginView> {
+class _LoginScreenState extends State<LoginScreen> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
@@ -39,7 +39,7 @@ class _LoginViewState extends State<LoginView> {
         bottomButtonText: "Sign up",
         onBottomButtonPressed: () {
           Navigator.of(context).pushReplacement(
-            MaterialPageRoute(builder: (context) => const SignupView()),
+            MaterialPageRoute(builder: (context) => const SignupScreen()),
           );
         },
         child: Column(
@@ -69,20 +69,25 @@ class _LoginViewState extends State<LoginView> {
               validator: (val) {
                 if (val == null || val.isEmpty) return "Password is required";
 
-                if (val.length < 8)
+                if (val.length < 8) {
                   return "Password must be at least 8 characters";
+                }
 
-                if (!RegExp(r'[A-Z]').hasMatch(val))
+                if (!RegExp(r'[A-Z]').hasMatch(val)) {
                   return "Must contain at least one uppercase letter";
+                }
 
-                if (!RegExp(r'[a-z]').hasMatch(val))
+                if (!RegExp(r'[a-z]').hasMatch(val)) {
                   return "Must contain at least one lowercase letter";
+                }
 
-                if (!RegExp(r'[0-9]').hasMatch(val))
+                if (!RegExp(r'[0-9]').hasMatch(val)) {
                   return "Must contain at least one number";
+                }
 
-                if (!RegExp(r'[!@#\$&*~_=%^]+').hasMatch(val))
+                if (!RegExp(r'[!@#\$&*~_=%^]+').hasMatch(val)) {
                   return "Must contain at least one special character";
+                }
 
                 return null;
               },
@@ -130,17 +135,18 @@ class _LoginViewState extends State<LoginView> {
                   setState(() {
                     isLoading = false;
                   });
-
-                  if (error == null) {
-                    Navigator.of(context).pushReplacement(
-                      MaterialPageRoute(
-                        builder: (context) => const MainLayoutScreen(),
-                      ),
-                    );
-                  } else {
-                    ScaffoldMessenger.of(
-                      context,
-                    ).showSnackBar(SnackBar(content: Text(error)));
+                  if (context.mounted) {
+                    if (error == null) {
+                      Navigator.of(context).pushReplacement(
+                        MaterialPageRoute(
+                          builder: (context) => const MainLayoutScreen(),
+                        ),
+                      );
+                    } else {
+                      ScaffoldMessenger.of(
+                        context,
+                      ).showSnackBar(SnackBar(content: Text(error)));
+                    }
                   }
                 }
               },

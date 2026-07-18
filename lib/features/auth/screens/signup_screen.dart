@@ -4,18 +4,18 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:spotify_clone/core/widgets/customized_buttons/customized_elevated_button.dart';
 import 'package:spotify_clone/core/widgets/welcome_auth_layout.dart';
 import 'package:spotify_clone/features/auth/auth_controller.dart';
-import 'package:spotify_clone/features/auth/screens/login_view.dart';
+import 'package:spotify_clone/features/auth/screens/login_screen.dart';
 import 'package:spotify_clone/features/auth/screens/widgets/customized_textfield.dart';
 import 'package:spotify_clone/features/main_layout/main_layout_screen.dart';
 
-class SignupView extends StatefulWidget {
-  const SignupView({super.key});
+class SignupScreen extends StatefulWidget {
+  const SignupScreen({super.key});
 
   @override
-  State<SignupView> createState() => _SignupViewState();
+  State<SignupScreen> createState() => _SignupScreenState();
 }
 
-class _SignupViewState extends State<SignupView> {
+class _SignupScreenState extends State<SignupScreen> {
   TextEditingController nameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
@@ -41,7 +41,7 @@ class _SignupViewState extends State<SignupView> {
         bottomButtonText: "Log in",
         onBottomButtonPressed: () {
           Navigator.of(context).pushReplacement(
-            MaterialPageRoute(builder: (context) => const LoginView()),
+            MaterialPageRoute(builder: (context) => const LoginScreen()),
           );
         },
         child: Column(
@@ -91,20 +91,25 @@ class _SignupViewState extends State<SignupView> {
               validator: (val) {
                 if (val == null || val.isEmpty) return "Password is required";
 
-                if (val.length < 8)
+                if (val.length < 8) {
                   return "Password must be at least 8 characters";
+                }
 
-                if (!RegExp(r'[A-Z]').hasMatch(val))
+                if (!RegExp(r'[A-Z]').hasMatch(val)) {
                   return "Must contain at least one uppercase letter";
+                }
 
-                if (!RegExp(r'[a-z]').hasMatch(val))
+                if (!RegExp(r'[a-z]').hasMatch(val)) {
                   return "Must contain at least one lowercase letter";
+                }
 
-                if (!RegExp(r'[0-9]').hasMatch(val))
+                if (!RegExp(r'[0-9]').hasMatch(val)) {
                   return "Must contain at least one number";
+                }
 
-                if (!RegExp(r'[!@#\$&*~_=%^]+').hasMatch(val))
+                if (!RegExp(r'[!@#\$&*~_=%^]+').hasMatch(val)) {
                   return "Must contain at least one special character";
+                }
 
                 return null;
               },
@@ -115,10 +120,12 @@ class _SignupViewState extends State<SignupView> {
               isPassword: true,
               controller: confirmPasswordController,
               validator: (val) {
-                if (val == null || val.isEmpty)
+                if (val == null || val.isEmpty) {
                   return "Confirm Password is required";
-                if (passwordController.text != confirmPasswordController.text)
+                }
+                if (passwordController.text != confirmPasswordController.text) {
                   return "passwords don't match";
+                }
 
                 return null;
               },
@@ -151,17 +158,18 @@ class _SignupViewState extends State<SignupView> {
                   setState(() {
                     isLoading = false;
                   });
-
-                  if (error == null) {
-                    Navigator.of(context).pushReplacement(
-                      MaterialPageRoute(
-                        builder: (context) => const MainLayoutScreen(),
-                      ),
-                    );
-                  } else {
-                    ScaffoldMessenger.of(
-                      context,
-                    ).showSnackBar(SnackBar(content: Text(error)));
+                  if (context.mounted) {
+                    if (error == null) {
+                      Navigator.of(context).pushReplacement(
+                        MaterialPageRoute(
+                          builder: (context) => const MainLayoutScreen(),
+                        ),
+                      );
+                    } else {
+                      ScaffoldMessenger.of(
+                        context,
+                      ).showSnackBar(SnackBar(content: Text(error)));
+                    }
                   }
                 }
               },

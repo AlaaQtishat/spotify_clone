@@ -115,20 +115,22 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
                         setState(() {
                           isLoading = false;
                         });
-                        if (error == null) {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
-                              content: Text(
-                                "Reset link sent! Check your email.",
+                        if (context.mounted) {
+                          if (error == null) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text(
+                                  "Reset link sent! Check your email.",
+                                ),
                               ),
-                            ),
-                          );
+                            );
 
-                          Navigator.of(context).pop();
-                        } else {
-                          ScaffoldMessenger.of(
-                            context,
-                          ).showSnackBar(SnackBar(content: Text(error)));
+                            Navigator.of(context).pop();
+                          } else {
+                            ScaffoldMessenger.of(
+                              context,
+                            ).showSnackBar(SnackBar(content: Text(error)));
+                          }
                         }
                       }
                     },

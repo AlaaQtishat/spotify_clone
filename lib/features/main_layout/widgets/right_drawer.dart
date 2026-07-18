@@ -7,7 +7,7 @@ import 'package:spotify_clone/features/welcome/welcome_screen.dart';
 
 class RightDrawer extends StatelessWidget {
   RightDrawer({super.key});
-  AuthController authController = AuthController();
+  final AuthController authController = AuthController();
   @override
   Widget build(BuildContext context) {
     final user = FirebaseAuth.instance.currentUser;

@@ -3,7 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:spotify_clone/core/models/song_model.dart';
-import 'package:spotify_clone/core/widgets/songs_listTile.dart';
+import 'package:spotify_clone/core/widgets/songs_list_tile.dart';
 import 'package:spotify_clone/features/music_player_screen/music_player_screen.dart';
 
 class FavoritesScreen extends StatelessWidget {

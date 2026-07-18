@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:spotify_clone/core/data/app_data.dart';
-import 'package:spotify_clone/core/widgets/songs_listTile.dart';
+import 'package:spotify_clone/core/widgets/songs_list_tile.dart';
 import 'package:spotify_clone/features/music_player_screen/music_player_screen.dart';
 
 class SongsList extends StatelessWidget {

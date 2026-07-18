@@ -3,11 +3,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class CustomizedCard extends StatelessWidget {
-  String text;
-  String imgLink;
+  final String text;
+  final String imgLink;
   final VoidCallback? onTap;
 
-  CustomizedCard({
+  const CustomizedCard({
     super.key,
     required this.text,
     required this.imgLink,
@@ -18,7 +18,7 @@ class CustomizedCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onTap,
-      child: Container(
+      child: SizedBox(
         width: 170.w,
 
         child: Column(
