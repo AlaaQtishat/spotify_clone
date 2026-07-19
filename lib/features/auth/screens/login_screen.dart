@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:spotify_clone/core/services/shared_prefs_service.dart';
+import 'package:spotify_clone/features/auth/services/shared_prefs_service.dart';
 import 'package:spotify_clone/core/widgets/customized_buttons/customized_elevated_button.dart';
 import 'package:spotify_clone/core/widgets/customized_buttons/customized_text_button.dart';
 import 'package:spotify_clone/core/widgets/welcome_auth_layout.dart';

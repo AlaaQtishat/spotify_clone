@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:spotify_clone/core/services/shared_prefs_service.dart';
-import 'package:spotify_clone/features/auth/auth_service.dart';
+import 'package:spotify_clone/features/auth/services/shared_prefs_service.dart';
+import 'package:spotify_clone/features/auth/services/auth_service.dart';
 
 class AuthController {
   AuthService authService = AuthService();
