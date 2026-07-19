@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:spotify_clone/core/services/shared_prefs_service.dart';
 import 'package:spotify_clone/core/widgets/customized_buttons/customized_elevated_button.dart';
 import 'package:spotify_clone/core/widgets/customized_buttons/customized_text_button.dart';
 import 'package:spotify_clone/core/widgets/welcome_auth_layout.dart';
@@ -23,12 +24,36 @@ class _LoginScreenState extends State<LoginScreen> {
   final _formKey = GlobalKey<FormState>();
   bool isLoading = false;
   AuthController authController = AuthController();
-
+  bool isRememberMeChecked = false;
   @override
   void dispose() {
     emailController.dispose();
     passwordController.dispose();
     super.dispose();
+  }
+
+  SharedPrefsService sharedPrefsService = SharedPrefsService();
+
+  @override
+  void initState() {
+    super.initState();
+    loadSavedCredentials();
+  }
+
+  Future<void> loadSavedCredentials() async {
+    String? savedEmail = await sharedPrefsService.getEmail();
+    String? savedPassword = await sharedPrefsService.getPassword();
+
+    setState(() {
+      if (savedEmail != null) {
+        emailController.text = savedEmail;
+      }
+
+      if (savedPassword != null) {
+        passwordController.text = savedPassword;
+        isRememberMeChecked = true;
+      }
+    });
   }
 
   @override
@@ -93,22 +118,51 @@ class _LoginScreenState extends State<LoginScreen> {
               },
             ),
             SizedBox(height: 16.h),
-            Align(
-              alignment: Alignment.centerRight,
-              child: CustomizedTextButton(
-                text: "Forgot password?",
-                onPressed: () {
-                  Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (context) => ForgetPasswordScreen(),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Row(
+                  children: [
+                    SizedBox(width: 12.w),
+                    SizedBox(
+                      width: 24.w,
+                      height: 24.h,
+                      child: Checkbox(
+                        value: isRememberMeChecked,
+                        activeColor: Colors.green,
+                        side: const BorderSide(color: Colors.grey),
+                        onChanged: (val) {
+                          setState(() {
+                            isRememberMeChecked = val!;
+                          });
+                        },
+                      ),
                     ),
-                  );
-                },
-                textColor: const Color(0xFF4CAF50),
-                fontSize: 16.sp,
-              ),
+                    SizedBox(width: 8.w),
+                    Text(
+                      "Remember me",
+                      style: GoogleFonts.poppins(
+                        color: Colors.white,
+                        fontSize: 13.sp,
+                      ),
+                    ),
+                  ],
+                ),
+
+                CustomizedTextButton(
+                  text: "Forgot password?",
+                  onPressed: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => const ForgetPasswordScreen(),
+                      ),
+                    );
+                  },
+                  textColor: const Color(0xFF4CAF50),
+                  fontSize: 14.sp,
+                ),
+              ],
             ),
-            //  SizedBox(height: 60.h),
             CustomizedElevatedButton(
               content: isLoading
                   ? CircularProgressIndicator(color: Colors.white)
@@ -128,6 +182,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   });
 
                   String? error = await authController.loginEmailPassword(
+                    rememberMe: isRememberMeChecked,
                     email: emailController.text,
                     password: passwordController.text,
                   );

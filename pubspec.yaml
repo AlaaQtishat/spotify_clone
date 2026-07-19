@@ -38,6 +38,7 @@ dependencies:
   cloud_firestore: 4.17.5
   url_launcher: ^6.3.2
   audioplayers: ^6.7.1
+  shared_preferences: ^2.5.5
 
 
 dev_dependencies:
